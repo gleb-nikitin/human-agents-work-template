@@ -41,3 +41,6 @@ Public template for a workspace where humans and coding agents collaborate with 
 ## Safety and Scope
 - Agents must follow local `AGENTS.md` + global `rss/AGENTS.md`.
 - Destructive actions require explicit user instruction/confirmation.
+
+## License
+- MIT (`$WORKSPACE_ROOT/LICENSE`)
