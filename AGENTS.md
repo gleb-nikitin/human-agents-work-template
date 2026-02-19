@@ -24,7 +24,7 @@
 - update `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
 - update `$WORKSPACE_ROOT/log.md`
 - `human-facing process change`
-- update `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- update `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - update `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
 - update `$WORKSPACE_ROOT/log.md`
 - `project create/remove/rename`
@@ -59,7 +59,7 @@
 - On creation: add initial factual `log.md` entry and initial `docs/arch.md` facts.
 
 ## Context Sync
-- Keep `$WORKSPACE_ROOT/Human-Work-Doc.md` current for human context.
+- Keep `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md` current for human context.
 - Keep `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md` current for human context (EN).
 - Keep `$WORKSPACE_ROOT/agent/docs/all-work-doc.md` current for agent context.
 
@@ -70,5 +70,5 @@
 - LLM policy (English): this file `$WORKSPACE_ROOT/AGENTS.md`
 - Global shared policy (English): `$WORKSPACE_ROOT/rss/AGENTS.md`
 - LLM compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
-- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - Human policy (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`

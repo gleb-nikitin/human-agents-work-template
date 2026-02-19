@@ -14,14 +14,14 @@
 - Во всех командах и путях из документации заменяйте `$WORKSPACE_ROOT` на этот абсолютный путь.
 
 ## Какие файлы читать
-- Основной подробный документ: `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- Основной подробный документ: `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - English version: `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
 - Список проектов: `$WORKSPACE_ROOT/Human-Project-List.md`
 - Политика workspace для агентов: `$WORKSPACE_ROOT/AGENTS.md`
 
 ## Канонические источники
 - Для агентов (English): `$WORKSPACE_ROOT/AGENTS.md` и `$WORKSPACE_ROOT/rss/AGENTS.md`
-- Для человека (Russian): `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- Для человека (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - For humans (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
 
 ## Быстрые действия

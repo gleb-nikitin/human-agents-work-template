@@ -17,7 +17,7 @@ Public template for a workspace where humans and coding agents collaborate with 
 - Agent policy (English): `$WORKSPACE_ROOT/AGENTS.md`
 - Global shared policy (English): `$WORKSPACE_ROOT/rss/AGENTS.md`
 - Agent compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
-- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - Human policy (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
 - Human quickstart (Russian): `$WORKSPACE_ROOT/Human-README-Rus.md`
 - Human quickstart (English): `$WORKSPACE_ROOT/Human-README-Eng.md`

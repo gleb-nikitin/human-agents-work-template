@@ -15,14 +15,14 @@
 
 ## What to read
 - Main human policy doc: `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
-- Russian version: `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- Russian version: `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 - Human project index: `$WORKSPACE_ROOT/Human-Project-List.md`
 - Workspace agent policy: `$WORKSPACE_ROOT/AGENTS.md`
 
 ## Canonical sources
 - For agents (English): `$WORKSPACE_ROOT/AGENTS.md` and `$WORKSPACE_ROOT/rss/AGENTS.md`
 - For humans (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
-- For humans (Russian): `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- For humans (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
 
 ## Quick actions
 - Create project: `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
