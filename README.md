@@ -15,10 +15,11 @@ Public template for a workspace where humans and coding agents collaborate with 
 
 ## Canonical Sources
 - Agent policy (English): `$WORKSPACE_ROOT/AGENTS.md`
+- Claude auto-load policy (English): `$WORKSPACE_ROOT/CLAUDE.md`
 - Global shared policy (English): `$WORKSPACE_ROOT/rss/AGENTS.md`
 - Agent compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
-- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
-- Human policy (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
+- Human policy (Russian): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
+- Human policy (English): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
 - Human quickstart (Russian): `$WORKSPACE_ROOT/Human-README-Rus.md`
 - Human quickstart (English): `$WORKSPACE_ROOT/Human-README-Eng.md`
 
@@ -29,6 +30,8 @@ Public template for a workspace where humans and coding agents collaborate with 
    - `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
 3. Validate policy compliance:
    - `$WORKSPACE_ROOT/agent/scripts/policy-check.sh`
+4. Optional Claude launcher:
+   - `$WORKSPACE_ROOT/claude.command`
 
 ## Placeholder Convention
 - Documentation uses `$WORKSPACE_ROOT` instead of local absolute paths.

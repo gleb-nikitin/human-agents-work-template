@@ -14,6 +14,8 @@
 - Before adding text to any `AGENTS.md`, check if it improves execution clarity.
 - Before work: if local `AGENTS.md` changed, re-read it and load only required referenced context.
 - During work: follow current in-scope `AGENTS.md`.
+- Rule priority (highest -> lowest): system/developer instructions -> user instructions -> local in-scope `AGENTS.md` -> workspace/global policy.
+- Workspace/global policy provides defaults and must not override local project rules.
 - If requirements are unclear/conflicting: ask focused clarification before proceeding.
 - After meaningful actions: append to local `./log.md` as `YYYY-MM-DD HH:MM | action | result`.
 - After work: update in-scope `AGENTS.md` and related context files when facts/processes change.
@@ -24,11 +26,11 @@
 - update `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
 - update `$WORKSPACE_ROOT/log.md`
 - `human-facing process change`
-- update `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
-- update `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
+- update `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
+- update `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
 - update `$WORKSPACE_ROOT/log.md`
 - `project create/remove/rename`
-- update `$WORKSPACE_ROOT/Human-Project-List.md`
+- update `$WORKSPACE_ROOT/human-docs/Human-Project-List.md`
 - update `$WORKSPACE_ROOT/log.md`
 - `rss resource availability change`
 - update `$WORKSPACE_ROOT/rss/AGENTS.md`
@@ -56,11 +58,18 @@
 - Project name must be `kebab-case`.
 - User must explicitly choose destination: `code/` or `web/`.
 - New projects must use `AGENTS.md` (uppercase).
+- New projects must include baseline `CLAUDE.md` for Claude compatibility.
 - On creation: add initial factual `log.md` entry and initial `docs/arch.md` facts.
 
+## Git Safety Defaults
+- Default branch is `main`.
+- Use another default branch only if explicitly defined in local in-scope `AGENTS.md`.
+- Stage intentionally by explicit paths/files.
+- Never use bulk staging (`git add -A`, `git add .`) unless user explicitly instructs it.
+
 ## Context Sync
-- Keep `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md` current for human context.
-- Keep `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md` current for human context (EN).
+- Keep `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md` current for human context.
+- Keep `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md` current for human context (EN).
 - Keep `$WORKSPACE_ROOT/agent/docs/all-work-doc.md` current for agent context.
 
 ## Auto Update Agents
@@ -68,7 +77,8 @@
 
 ## Canonical Sources
 - LLM policy (English): this file `$WORKSPACE_ROOT/AGENTS.md`
+- Claude Code auto-load (English): `$WORKSPACE_ROOT/CLAUDE.md`
 - Global shared policy (English): `$WORKSPACE_ROOT/rss/AGENTS.md`
 - LLM compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
-- Human policy (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
-- Human policy (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
+- Human policy (Russian): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
+- Human policy (English): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`

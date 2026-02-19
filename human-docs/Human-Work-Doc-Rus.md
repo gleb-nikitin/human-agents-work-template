@@ -26,6 +26,7 @@ work/
 ├── rss/      глобальные ресурсы и политика
 ├── agent/    служебные агенты и скрипты
 ├── logs/     агрегированные логи
+├── human-docs/ документы для людей
 
 Правило:
 
@@ -39,11 +40,12 @@ work/
 
 local AGENTS.md
 rss/AGENTS.md
+CLAUDE.md (автозагрузка для Claude Code)
 
 Для человека
 
-Human-Work-Doc-Rus.md
-Human-Project-List.md
+human-docs/Human-Work-Doc-Rus.md
+human-docs/Human-Project-List.md
 
 
 ⸻
@@ -222,6 +224,7 @@ kebab-case
 Обязательные файлы:
 
 AGENTS.md
+CLAUDE.md
 log.md
 docs/arch.md
 docs/kb.md

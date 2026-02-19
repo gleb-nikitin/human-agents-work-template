@@ -6,6 +6,7 @@
 
 ## Required Files
 - `AGENTS.md`
+- `CLAUDE.md`
 - `log.md`
 - `docs/arch.md`
 - `docs/kb.md`

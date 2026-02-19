@@ -13,5 +13,8 @@
 - `$WORKSPACE_ROOT/code/_project-template`
 - `$WORKSPACE_ROOT/web/_project-template`
 
+## Human Docs (`$WORKSPACE_ROOT/human-docs`)
+- `$WORKSPACE_ROOT/human-docs/claude-chats` — optional Claude chat exports
+
 ## Update Rule
 - Update this file when projects are created, archived, renamed, or moved.

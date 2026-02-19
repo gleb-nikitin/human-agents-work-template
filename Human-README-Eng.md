@@ -14,20 +14,22 @@
 - Replace `$WORKSPACE_ROOT` in all docs/commands with that absolute path.
 
 ## What to read
-- Main human policy doc: `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
-- Russian version: `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
-- Human project index: `$WORKSPACE_ROOT/Human-Project-List.md`
+- Main human policy doc: `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
+- Russian version: `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
+- Human project index: `$WORKSPACE_ROOT/human-docs/Human-Project-List.md`
 - Workspace agent policy: `$WORKSPACE_ROOT/AGENTS.md`
 
 ## Canonical sources
 - For agents (English): `$WORKSPACE_ROOT/AGENTS.md` and `$WORKSPACE_ROOT/rss/AGENTS.md`
-- For humans (English): `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
-- For humans (Russian): `$WORKSPACE_ROOT/Human-Work-Doc-Rus.md`
+- For humans (English): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
+- For humans (Russian): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
 
 ## Quick actions
 - Create project: `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
 - Validate policy: `$WORKSPACE_ROOT/agent/scripts/policy-check.sh`
+- Launch Claude (optional): `$WORKSPACE_ROOT/claude.command`
 
 ## Important
 - Human docs are provided in both English and Russian.
 - Agent docs/logs remain compact and LLM-efficient.
+- Claude uses `$WORKSPACE_ROOT/CLAUDE.md`.

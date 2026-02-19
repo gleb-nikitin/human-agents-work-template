@@ -78,6 +78,7 @@ check_project() {
   fi
 
   require_file "$project" "$project_dir/AGENTS.md"
+  require_file "$project" "$project_dir/CLAUDE.md"
   require_file "$project" "$project_dir/docs/arch.md"
   require_file "$project" "$project_dir/docs/kb.md"
   require_file "$project" "$project_dir/docs/run.md"

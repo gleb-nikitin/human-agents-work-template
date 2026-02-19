@@ -26,6 +26,7 @@ work/
 ├── rss/      global resources and policy
 ├── agent/    service agents and scripts
 ├── logs/     aggregated logs
+├── human-docs/ human-facing documents
 
 Rule:
 
@@ -39,11 +40,12 @@ For agents
 
 local AGENTS.md
 rss/AGENTS.md
+CLAUDE.md (Claude Code auto-load)
 
 For humans
 
-Human-Work-Doc-Rus.md
-Human-Project-List.md
+human-docs/Human-Work-Doc-Rus.md
+human-docs/Human-Project-List.md
 
 ---
 
@@ -218,6 +220,7 @@ kebab-case
 Required files:
 
 AGENTS.md
+CLAUDE.md
 log.md
 docs/arch.md
 docs/kb.md
