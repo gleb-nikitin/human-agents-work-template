@@ -5,10 +5,12 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 ROOT="$(cd -- "$SCRIPT_DIR/../.." >/dev/null 2>&1 && pwd)"
 CODE_ROOT="$ROOT/code"
 WEB_ROOT="$ROOT/web"
+LOG_LINE_REGEX='^[0-9]{4}-[0-9]{2}-[0-9]{2}\ [0-9]{2}:[0-9]{2}\ \|\ .+\ \|\ .+$'
 
 FAILED=0
 CHECKED=0
 
+# ---------- helpers ----------
 print_fail() {
   local project="$1"
   local message="$2"
@@ -49,7 +51,7 @@ check_log_file() {
     lineno=$((lineno + 1))
     [[ -z "$line" ]] && continue
     [[ "$line" =~ ^# ]] && continue
-    if [[ "$line" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}\ [0-9]{2}:[0-9]{2}\ \|\ .+\ \|\ .+$ ]]; then
+    if [[ "$line" =~ $LOG_LINE_REGEX ]]; then
       has_entry=1
     else
       print_fail "$project" "invalid log format at line $lineno in $log_file"
@@ -61,6 +63,7 @@ check_log_file() {
   fi
 }
 
+# ---------- project checks ----------
 check_project() {
   local area="$1"
   local project_dir="$2"
@@ -92,6 +95,7 @@ check_project() {
   print_ok "$project" "checked"
 }
 
+# ---------- area scan ----------
 scan_area() {
   local area="$1"
   local base="$2"
@@ -113,6 +117,7 @@ scan_area() {
   fi
 }
 
+# ---------- execution ----------
 scan_area "code" "$CODE_ROOT"
 scan_area "web" "$WEB_ROOT"
 

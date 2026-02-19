@@ -1,6 +1,7 @@
 # RSS Resources
 
-- no resources listed below this line are available
+- no operational resources listed below this line are available by default
+- docs/_example-resource.md: available (format reference only)
 - docs/github-publishing.md: not available
 - docs/skills.md: not available
 - docs/ssh-keys.md: not available

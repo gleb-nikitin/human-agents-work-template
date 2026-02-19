@@ -19,12 +19,31 @@
 - After work: update in-scope `AGENTS.md` and related context files when facts/processes change.
 
 ## Post-Work Update Matrix
-- `policy change` -> update `$WORKSPACE_ROOT/AGENTS.md`, `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`, `$WORKSPACE_ROOT/log.md`.
-- `human-facing process change` -> update `$WORKSPACE_ROOT/Human-Work-Doc.md`, `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`, `$WORKSPACE_ROOT/log.md`.
-- `project create/remove/rename` -> update `$WORKSPACE_ROOT/Human-Project-List.md`, `$WORKSPACE_ROOT/log.md`.
-- `rss resource availability change` -> update `$WORKSPACE_ROOT/rss/AGENTS.md`, relevant `$WORKSPACE_ROOT/rss/docs/*.md`, `$WORKSPACE_ROOT/log.md`.
-- `explicit test run` -> update only `$WORKSPACE_ROOT/log.md` unless user explicitly requests context/doc updates.
-- Logging granularity: log key stages only (context load, execution milestone, validation, context sync); do not log micro-steps.
+- `policy change`
+- update `$WORKSPACE_ROOT/AGENTS.md`
+- update `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
+- update `$WORKSPACE_ROOT/log.md`
+- `human-facing process change`
+- update `$WORKSPACE_ROOT/Human-Work-Doc.md`
+- update `$WORKSPACE_ROOT/Human-Work-Doc-Eng.md`
+- update `$WORKSPACE_ROOT/log.md`
+- `project create/remove/rename`
+- update `$WORKSPACE_ROOT/Human-Project-List.md`
+- update `$WORKSPACE_ROOT/log.md`
+- `rss resource availability change`
+- update `$WORKSPACE_ROOT/rss/AGENTS.md`
+- update relevant `$WORKSPACE_ROOT/rss/docs/*.md`
+- update `$WORKSPACE_ROOT/log.md`
+- `explicit test run`
+- update only `$WORKSPACE_ROOT/log.md` unless user explicitly requests context/doc updates
+
+## Logging Granularity
+- Log key stages only:
+- `context load`
+- `execution milestone`
+- `validation`
+- `context sync`
+- Do not log micro-steps.
 
 ## Context Loading Priority
 1. Local `AGENTS.md` in active folder.

@@ -36,6 +36,7 @@ Public template for a workspace where humans and coding agents collaborate with 
 
 ## Intentionally Empty / Not Available
 - `rss/docs/*` resources may exist as placeholders and be marked `not available` in `rss/AGENTS.md`.
+- See `$WORKSPACE_ROOT/rss/docs/_example-resource.md` for minimal resource doc format.
 - This is expected for public template state.
 
 ## Safety and Scope
