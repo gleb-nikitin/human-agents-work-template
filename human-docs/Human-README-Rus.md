@@ -1,8 +1,8 @@
 # Human README (RU)
 
 ## Язык
-- RU (этот файл): `$WORKSPACE_ROOT/Human-README-Rus.md`
-- EN: `$WORKSPACE_ROOT/Human-README-Eng.md`
+- RU (этот файл): `$WORKSPACE_ROOT/human-docs/Human-README-Rus.md`
+- EN: `$WORKSPACE_ROOT/human-docs/Human-README-Eng.md`
 
 ## Что это
 - Это короткая стартовая страница для человека по workspace `$WORKSPACE_ROOT`.
@@ -27,7 +27,7 @@
 ## Быстрые действия
 - Создать проект: `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
 - Проверить соответствие политике: `$WORKSPACE_ROOT/agent/scripts/policy-check.sh`
-- Запуск Claude (опционально): `$WORKSPACE_ROOT/claude.command`
+- Запуск Claude (опционально): используйте локальную настройку Claude CLI/app.
 
 ## Важно
 - Для людей документация в human-файлах доступна на RU и EN.
