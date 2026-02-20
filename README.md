@@ -4,8 +4,8 @@ Public template for a workspace where humans and coding agents collaborate with 
 
 ## Language
 - English (this file): `$WORKSPACE_ROOT/README.md`
-- Russian quickstart: `$WORKSPACE_ROOT/Human-README-Rus.md`
-- English quickstart: `$WORKSPACE_ROOT/Human-README-Eng.md`
+- Russian quickstart: `$WORKSPACE_ROOT/human-docs/Human-README-Rus.md`
+- English quickstart: `$WORKSPACE_ROOT/human-docs/Human-README-Eng.md`
 
 ## What This Repository Provides
 - A ready-to-use workspace structure (`code/`, `web/`, `rss/`, `agent/`, etc.).
@@ -20,8 +20,8 @@ Public template for a workspace where humans and coding agents collaborate with 
 - Agent compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
 - Human policy (Russian): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
 - Human policy (English): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
-- Human quickstart (Russian): `$WORKSPACE_ROOT/Human-README-Rus.md`
-- Human quickstart (English): `$WORKSPACE_ROOT/Human-README-Eng.md`
+- Human quickstart (Russian): `$WORKSPACE_ROOT/human-docs/Human-README-Rus.md`
+- Human quickstart (English): `$WORKSPACE_ROOT/human-docs/Human-README-Eng.md`
 
 ## Quick Start
 1. Set your workspace root to this repository path:
@@ -30,8 +30,8 @@ Public template for a workspace where humans and coding agents collaborate with 
    - `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
 3. Validate policy compliance:
    - `$WORKSPACE_ROOT/agent/scripts/policy-check.sh`
-4. Optional Claude launcher:
-   - `$WORKSPACE_ROOT/claude.command`
+4. Optional Claude setup:
+   - Use your local Claude CLI/app setup.
 
 ## Placeholder Convention
 - Documentation uses `$WORKSPACE_ROOT` instead of local absolute paths.

@@ -1,8 +1,8 @@
 # Human README (EN)
 
 ## Language
-- EN (this file): `$WORKSPACE_ROOT/Human-README-Eng.md`
-- RU: `$WORKSPACE_ROOT/Human-README-Rus.md`
+- EN (this file): `$WORKSPACE_ROOT/human-docs/Human-README-Eng.md`
+- RU: `$WORKSPACE_ROOT/human-docs/Human-README-Rus.md`
 
 ## What this is
 - A short human quickstart for workspace `$WORKSPACE_ROOT`.
@@ -27,7 +27,7 @@
 ## Quick actions
 - Create project: `$WORKSPACE_ROOT/agent/scripts/new-project.sh <code|web> <project-name> [options]`
 - Validate policy: `$WORKSPACE_ROOT/agent/scripts/policy-check.sh`
-- Launch Claude (optional): `$WORKSPACE_ROOT/claude.command`
+- Launch Claude (optional): use your local Claude CLI/app setup.
 
 ## Important
 - Human docs are provided in both English and Russian.
