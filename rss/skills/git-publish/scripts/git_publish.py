@@ -36,7 +36,7 @@ def default_remote_branch(remote: str) -> str:
         m = re.search(r"HEAD branch:\s*(\S+)", info)
         if m:
             head_branch = m.group(1).strip()
-            if head_branch and head_branch not in {"(unknown)", "unknown"}:
+            if head_branch and head_branch != "(unknown)":
                 return head_branch
     except Exception:
         pass
