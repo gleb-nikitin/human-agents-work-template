@@ -192,6 +192,15 @@ def api_pr_create(base: str, head: str, title: str, body: str) -> str | None:
     return url or None
 
 
+def commit_log_marker(project_root: Path, marker: str, remote: str, branch: str) -> None:
+    append_project_log(project_root, marker)
+    run(["git", "add", "--", "log.md"])
+    if staged_is_empty():
+        return
+    run(["git", "commit", "-m", "chore: git-publish marker"])
+    run(["git", "push", remote, branch])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="git-publish", description="Deterministic git publish (branch+PR by default).")
     ap.add_argument("--mode", choices=["pr", "no-pr"], default="pr")
@@ -231,15 +240,9 @@ def main() -> int:
         # Derive from folder name for determinism.
         topic = Path(project_root).name
     topic = re.sub(r"[^a-z0-9-]+", "-", topic.lower()).strip("-") or "update"
-    branch = out(["git", "rev-parse", "--abbrev-ref", "HEAD"])
-    target_branch = branch
+    target_branch = base
     if mode == "pr":
         target_branch = f"codex/{topic}"
-        ensure_branch(target_branch, base, remote)
-    else:
-        # no-pr: publish directly to base branch
-        ensure_branch(base, base, remote)
-        target_branch = base
 
     status_z = out(["git", "status", "--porcelain=1", "-z"])
     entries = parse_status_z(status_z)
@@ -252,6 +255,19 @@ def main() -> int:
         print("paths:")
         for e in entries:
             print(f"  {e.code} {e.path}")
+        return 0
+
+    if mode == "pr":
+        ensure_branch(target_branch, base, remote)
+    else:
+        # no-pr: publish directly to base branch
+        ensure_branch(base, base, remote)
+        target_branch = base
+
+    status_z = out(["git", "status", "--porcelain=1", "-z"])
+    entries = parse_status_z(status_z)
+    if not entries:
+        print("No changes to publish.")
         return 0
 
     stage_explicit(entries)
@@ -289,7 +305,7 @@ def main() -> int:
     ts = now_ts()
     pr_part = f" pr={pr_url}" if pr_url else ""
     marker = f"{ts} | git-publish skill | push mode={mode} branch={target_branch} base={base}{pr_part} | success"
-    append_project_log(project_root, marker)
+    commit_log_marker(project_root, marker, remote, target_branch)
 
     if pr_url:
         print(pr_url)
