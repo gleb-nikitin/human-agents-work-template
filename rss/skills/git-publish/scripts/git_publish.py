@@ -35,7 +35,9 @@ def default_remote_branch(remote: str) -> str:
         info = out(["git", "remote", "show", remote])
         m = re.search(r"HEAD branch:\s*(\S+)", info)
         if m:
-            return m.group(1)
+            head_branch = m.group(1).strip()
+            if head_branch and head_branch != "(unknown)":
+                return head_branch
     except Exception:
         pass
     # Fallbacks
