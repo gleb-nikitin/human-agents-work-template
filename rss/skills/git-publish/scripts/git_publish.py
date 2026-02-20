@@ -110,15 +110,25 @@ def chunked(seq: list[str], size: int = 50) -> list[list[str]]:
     return [seq[i : i + size] for i in range(0, len(seq), size)]
 
 
+def has_ref(ref: str) -> bool:
+    return subprocess.run(["git", "show-ref", "--verify", ref]).returncode == 0
+
+
 def ensure_branch(branch: str, base: str, remote: str) -> None:
     current = out(["git", "rev-parse", "--abbrev-ref", "HEAD"])
     if current == branch:
         return
+    if has_ref(f"refs/heads/{branch}"):
+        run(["git", "checkout", branch])
+        return
+    remote_branch_ref = f"{remote}/{branch}"
+    if has_ref(f"refs/remotes/{remote_branch_ref}"):
+        run(["git", "checkout", "-B", branch, remote_branch_ref])
+        return
     # Create from remote/base if available, else local base.
-    remote_ref = f"{remote}/{base}"
-    has_remote = subprocess.run(["git", "show-ref", "--verify", f"refs/remotes/{remote_ref}"]).returncode == 0
-    if has_remote:
-        run(["git", "checkout", "-B", branch, remote_ref])
+    remote_base_ref = f"{remote}/{base}"
+    if has_ref(f"refs/remotes/{remote_base_ref}"):
+        run(["git", "checkout", "-B", branch, remote_base_ref])
     else:
         run(["git", "checkout", "-B", branch, base])
 

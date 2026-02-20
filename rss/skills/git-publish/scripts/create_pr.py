@@ -19,7 +19,7 @@ def parse_github_owner_repo(remote_url: str) -> tuple[str, str]:
     # Supports:
     # - git@github.com:owner/repo.git
     # - https://github.com/owner/repo.git
-    m = re.search(r"github\.com[:/](?P<owner>[^/]+)/(?P<repo>[^/.]+)(?:\.git)?$", remote_url.strip())
+    m = re.search(r"github\.com[:/](?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)?$", remote_url.strip())
     if not m:
         raise ValueError(f"Unsupported remote URL: {remote_url!r}")
     return m.group("owner"), m.group("repo")
