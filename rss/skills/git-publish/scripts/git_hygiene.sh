@@ -3,9 +3,10 @@ set -euo pipefail
 
 REPO=""
 APPLY=0
+REMOTE=""
 
 usage() {
-  echo "Usage: git_hygiene.sh --repo <path> [--apply]" >&2
+  echo "Usage: git_hygiene.sh --repo <path> [--remote <name>] [--apply]" >&2
 }
 
 while [[ $# -gt 0 ]]; do
@@ -17,6 +18,10 @@ while [[ $# -gt 0 ]]; do
     --apply)
       APPLY=1
       shift
+      ;;
+    --remote)
+      REMOTE="${2:-}"
+      shift 2
       ;;
     -h|--help)
       usage
@@ -55,10 +60,45 @@ if [[ "$APPLY" -eq 1 ]]; then
   fi
 fi
 
-git fetch origin --prune --quiet
+current_branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+
+detect_remote() {
+  if [[ -n "$REMOTE" ]]; then
+    if git remote | grep -Fxq "$REMOTE"; then
+      echo "$REMOTE"
+      return
+    fi
+    echo "Unknown remote: $REMOTE" >&2
+    exit 2
+  fi
+
+  if [[ -n "$current_branch" ]]; then
+    local branch_remote
+    branch_remote="$(git config --get "branch.${current_branch}.remote" || true)"
+    if [[ -n "$branch_remote" ]] && git remote | grep -Fxq "$branch_remote"; then
+      echo "$branch_remote"
+      return
+    fi
+  fi
+
+  if git remote | grep -Fxq "origin"; then
+    echo "origin"
+    return
+  fi
+
+  git remote | head -n 1
+}
+
+selected_remote="$(detect_remote)"
 
 echo "== status =="
 git status -sb
+echo "== remote =="
+if [[ -n "$selected_remote" ]]; then
+  echo "$selected_remote"
+else
+  echo "(none)"
+fi
 
 gone_branches="$(
   git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads \
@@ -78,14 +118,20 @@ if [[ "$APPLY" -eq 0 ]]; then
   exit 0
 fi
 
+if [[ -n "$selected_remote" ]]; then
+  git fetch "$selected_remote" --prune --quiet || echo "warning: fetch failed for remote '$selected_remote'" >&2
+fi
+
 if git show-ref --verify --quiet refs/heads/main; then
   git checkout main >/dev/null
-  git pull --ff-only origin main
+  if [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
+    git pull --ff-only "$selected_remote" main
+  fi
 fi
 
 if [[ -n "$gone_branches" ]]; then
   while IFS= read -r branch; do
-    [[ -z "$branch" || "$branch" == "main" ]] && continue
+    [[ -z "$branch" || "$branch" == "main" || "$branch" == "$current_branch" ]] && continue
     git branch -D "$branch" >/dev/null
   done <<< "$gone_branches"
 fi

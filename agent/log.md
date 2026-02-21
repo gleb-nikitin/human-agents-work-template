@@ -9,3 +9,5 @@
 2026-02-21 18:05 | context sync | Opened PR https://github.com/gleb-nikitin/human-agents-work-template/pull/5 for git-publish hygiene helper.
 2026-02-21 18:10 | execution milestone | Updated git-publish skill docs: --apply requires fully clean tree including untracked files.
 2026-02-21 18:10 | validation | git_hygiene tests passed: dirty-tracked and dirty-untracked both refused with exit code 2.
+2026-02-21 18:59 | execution milestone | Addressed PR#5 review: git_hygiene now supports worktrees/remotes and keeps dry-run non-mutating.
+2026-02-21 18:59 | validation | git_hygiene tests passed: no-origin dry-run, worktree dry-run, and apply on current gone branch without delete failure.
