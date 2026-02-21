@@ -6,3 +6,4 @@
 2026-02-21 17:49 | context sync | git-publish opened PR https://github.com/gleb-nikitin/human-agents-work-template/pull/4 for spec006 export branch codex/spec-006-export.
 2026-02-21 18:04 | execution milestone | Added rss/skills/git-publish/scripts/git_hygiene.sh and updated skill docs with usage/apply modes.
 2026-02-21 18:04 | validation | git_hygiene dry-run passed; scripts/run pr --help still works with existing interface.
+2026-02-21 18:05 | context sync | Opened PR https://github.com/gleb-nikitin/human-agents-work-template/pull/5 for git-publish hygiene helper.
