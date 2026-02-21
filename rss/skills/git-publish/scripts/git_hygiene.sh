@@ -60,7 +60,7 @@ if [[ "$APPLY" -eq 1 ]]; then
   fi
 fi
 
-current_branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+current_branch_initial="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
 
 detect_remote() {
   if [[ -n "$REMOTE" ]]; then
@@ -72,9 +72,9 @@ detect_remote() {
     exit 2
   fi
 
-  if [[ -n "$current_branch" ]]; then
+  if [[ -n "$current_branch_initial" ]]; then
     local branch_remote
-    branch_remote="$(git config --get "branch.${current_branch}.remote" || true)"
+    branch_remote="$(git config --get "branch.${current_branch_initial}.remote" || true)"
     if [[ -n "$branch_remote" ]] && git remote | grep -Fxq "$branch_remote"; then
       echo "$branch_remote"
       return
@@ -122,6 +122,11 @@ if [[ -n "$selected_remote" ]]; then
   git fetch "$selected_remote" --prune --quiet || echo "warning: fetch failed for remote '$selected_remote'" >&2
 fi
 
+gone_branches_after_fetch="$(
+  git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads \
+    | awk '$2 ~ /\[gone\]/ {print $1}'
+)"
+
 if git show-ref --verify --quiet refs/heads/main; then
   git checkout main >/dev/null
   if [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
@@ -129,11 +134,13 @@ if git show-ref --verify --quiet refs/heads/main; then
   fi
 fi
 
-if [[ -n "$gone_branches" ]]; then
+current_branch_now="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)"
+
+if [[ -n "$gone_branches_after_fetch" ]]; then
   while IFS= read -r branch; do
-    [[ -z "$branch" || "$branch" == "main" || "$branch" == "$current_branch" ]] && continue
+    [[ -z "$branch" || "$branch" == "main" || "$branch" == "$current_branch_now" ]] && continue
     git branch -D "$branch" >/dev/null
-  done <<< "$gone_branches"
+  done <<< "$gone_branches_after_fetch"
 fi
 
 echo "== final status =="

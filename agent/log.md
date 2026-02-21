@@ -11,3 +11,5 @@
 2026-02-21 18:10 | validation | git_hygiene tests passed: dirty-tracked and dirty-untracked both refused with exit code 2.
 2026-02-21 18:59 | execution milestone | Addressed PR#5 review: git_hygiene now supports worktrees/remotes and keeps dry-run non-mutating.
 2026-02-21 18:59 | validation | git_hygiene tests passed: no-origin dry-run, worktree dry-run, and apply on current gone branch without delete failure.
+2026-02-21 19:03 | execution milestone | Addressed PR#5 follow-up: rescan [gone] branches after fetch --prune before deletion pass.
+2026-02-21 19:03 | validation | git_hygiene regression scenarios passed (post-prune stale deletion + current branch safety).
