@@ -20,3 +20,5 @@
 2026-02-21 19:18 | validation | git_hygiene tests passed: worktree-held main no longer aborts apply; fetch-fail guard unchanged.
 2026-02-21 19:27 | execution milestone | Updated git_hygiene docs/logic for tracked-remotes refresh before [gone] branch deletion pass.
 2026-02-21 19:27 | validation | Proactive audit tests passed: feature branch preserved after remote recreate and apply aborts on tracked-remote fetch errors.
+2026-02-21 19:34 | execution milestone | Addressed PR#5 worktree-branch deletion comment and synced skill docs.
+2026-02-21 19:34 | validation | git_hygiene multi-gone test passed: locked branch kept with warning, stale branch removed.

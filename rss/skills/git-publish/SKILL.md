@@ -119,3 +119,4 @@ On failure, append:
 - `scripts/git_hygiene.sh`: optional git hygiene helper (dry-run lists status/`[gone]` branches only; `--apply` performs `fetch --prune`, ff-update `main` when available, and deletes `[gone]` local branches except current branch).
   - If `main` cannot be checked out (for example held by another worktree), helper skips main fast-forward and continues cleanup safely.
   - In `--apply`, helper refreshes all tracked remotes before evaluating branch deletion, and aborts on any fetch failure.
+  - If a gone branch is held by another worktree, helper warns and skips that branch (continues with remaining cleanup).

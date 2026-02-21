@@ -159,7 +159,10 @@ current_branch_now="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)
 if [[ -n "$gone_branches_after_fetch" ]]; then
   while IFS= read -r branch; do
     [[ -z "$branch" || "$branch" == "main" || "$branch" == "$current_branch_now" ]] && continue
-    git branch -D "$branch" >/dev/null
+    if ! git branch -D "$branch" >/dev/null 2>&1; then
+      echo "warning: unable to delete branch '$branch' (possibly checked out in another worktree); skipping." >&2
+      continue
+    fi
   done <<< "$gone_branches_after_fetch"
 fi
 
