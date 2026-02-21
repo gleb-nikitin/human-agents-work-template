@@ -22,6 +22,7 @@
 7. [done] Define and standardize a lightweight onboarding usability protocol with checks for templates, existing projects, and `/rss/skills`.
 8. [todo] Evolve `code` and `web` templates as separate standards (both distinct from `/work` and from each other) based on their runtime and delivery differences.
 9. [done] Add guardrails so standards are always propagated to templates and required target paths in the same change cycle.
+10. [done] Make validation gates portable and read-only in dry-run mode (no check-time side effects).
 
 ## Active Specs
 - None.
@@ -32,7 +33,8 @@
 - `003-doc-partition-audit.md` | `done`
 - `004-onboarding-usability-protocol.md` | `done`
 - `005-template-standard-propagation-guardrails.md` | `done`
-- Next spec number: 006 — update this line whenever a new spec is registered
+- `006-validation-gates-readonly-portability.md` | `done`
+- Next spec number: 007 — update this line whenever a new spec is registered
 
 ## Execution Rules
 - First bring `/work` itself to standard; then supervise subprojects.

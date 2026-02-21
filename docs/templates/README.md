@@ -17,6 +17,7 @@ This directory is the canonical, machine-checkable source for project template s
 - Dry run:
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain code --dry-run`
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain web --dry-run`
+  - Dry-run is read-only and must not modify tracked files.
 - Apply:
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain code --apply`
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain web --apply`
@@ -33,3 +34,4 @@ This directory is the canonical, machine-checkable source for project template s
 ## Last Run Report
 - Canonical report path:
   - `$WORKSPACE_ROOT/agent/reports/template-sync-last-run.md`
+- Report is written on apply/fail-apply runs, not on dry-run.

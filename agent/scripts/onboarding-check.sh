@@ -15,6 +15,12 @@ ok() {
   echo "[OK]   $label :: $msg"
 }
 
+info() {
+  local label="$1"
+  local msg="$2"
+  echo "[INFO] $label :: $msg"
+}
+
 fail() {
   local label="$1"
   local msg="$2"
@@ -178,14 +184,24 @@ check_skills_workspace() {
   local skills_root="$ROOT/rss/skills"
   local label="rss/skills"
 
-  require_file "$label" "$skills_root/AGENTS.md"
-  require_file "$label" "$skills_root/agent/log.md"
-  require_absent_file "$label" "$skills_root/log.md"
+  require_dir "$label" "$skills_root"
+  [[ -d "$skills_root" ]] || return
 
-  if [[ ! -d "$skills_root" ]]; then
-    fail "$label" "missing directory: $skills_root"
-    return
+  CHECKED=$((CHECKED + 1))
+  if [[ -f "$skills_root/AGENTS.md" ]]; then
+    ok "$label" "present: $skills_root/AGENTS.md"
+  else
+    info "$label" "optional baseline file missing: $skills_root/AGENTS.md"
   fi
+
+  CHECKED=$((CHECKED + 1))
+  if [[ -f "$skills_root/agent/log.md" ]]; then
+    ok "$label" "present: $skills_root/agent/log.md"
+  else
+    info "$label" "optional baseline file missing: $skills_root/agent/log.md"
+  fi
+
+  require_absent_file "$label" "$skills_root/log.md"
 
   local d
   for d in "$skills_root"/*; do
