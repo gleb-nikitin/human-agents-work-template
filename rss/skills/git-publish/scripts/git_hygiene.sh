@@ -131,9 +131,12 @@ gone_branches_after_fetch="$(
 )"
 
 if git show-ref --verify --quiet refs/heads/main; then
-  git checkout main >/dev/null
-  if [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
-    git pull --ff-only "$selected_remote" main
+  if git checkout main >/dev/null 2>&1; then
+    if [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
+      git pull --ff-only "$selected_remote" main
+    fi
+  else
+    echo "warning: unable to checkout 'main' (possibly used by another worktree); skipping main fast-forward update." >&2
   fi
 fi
 

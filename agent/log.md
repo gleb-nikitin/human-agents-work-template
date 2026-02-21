@@ -16,3 +16,5 @@
 2026-02-21 19:04 | context sync | Pushed PR#5 update: recompute [gone] branches after fetch --prune before deletion.
 2026-02-21 19:12 | execution milestone | Addressed PR#5 P1: abort apply when remote fetch fails to prevent stale-ref branch deletions.
 2026-02-21 19:12 | validation | git_hygiene fetch-failure scenario now exits 2 with explicit abort message.
+2026-02-21 19:18 | execution milestone | Addressed PR#5 P2 for multi-worktree main checkout guard and synced helper docs.
+2026-02-21 19:18 | validation | git_hygiene tests passed: worktree-held main no longer aborts apply; fetch-fail guard unchanged.

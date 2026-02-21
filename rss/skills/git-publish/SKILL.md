@@ -117,3 +117,4 @@ On failure, append:
 - `scripts/create_pr_gh.sh`: creates a PR via `gh` (preferred).
 - `scripts/run`: entrypoint to stage/commit/push and create PR automatically (`--repo` required; `--dry-run` supported).
 - `scripts/git_hygiene.sh`: optional git hygiene helper (dry-run lists status/`[gone]` branches only; `--apply` performs `fetch --prune`, ff-update `main` when available, and deletes `[gone]` local branches except current branch).
+  - If `main` cannot be checked out (for example held by another worktree), helper skips main fast-forward and continues cleanup safely.
