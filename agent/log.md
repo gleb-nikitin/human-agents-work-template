@@ -3,3 +3,4 @@
 2026-02-21 17:49 | context load | spec=/Users/glebnikitin/Public/blank-work/for-git/agent/specs/006-validation-gates-readonly-portability.md export cycle started on branch codex/spec-006-export.
 2026-02-21 17:49 | execution milestone | Applied spec006 sync to onboarding/template-sync scripts and policy/run/kb/template docs in public repo.
 2026-02-21 17:49 | validation | build/policy/template-sync(dry-run)/onboarding-check succeeded; no dry-run side-effect files changed.
+2026-02-21 17:49 | context sync | git-publish opened PR https://github.com/gleb-nikitin/human-agents-work-template/pull/4 for spec006 export branch codex/spec-006-export.
