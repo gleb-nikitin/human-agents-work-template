@@ -23,6 +23,16 @@ Run from anywhere (repo is explicit):
   - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/run no-pr --repo /absolute/path/to/repo`
 - Dry run (prints detected paths; no commit/push):
   - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/run pr --repo /absolute/path/to/repo --dry-run`
+- Git hygiene helper (safe dry-run by default, does not publish):
+  - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo`
+  - optional explicit remote:
+    - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo --remote <name>`
+  - apply mode:
+    - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo --apply`
+  - safety rule:
+    - `--apply` requires a fully clean working tree (including untracked files), otherwise exits with code `2`.
+    - dry-run is read-only: no `fetch`/`prune` and no branch deletions.
+    - in `--apply`, remote fetch/prune failure is fatal (aborts before any branch deletion).
 
 What it does:
 - Reads git status, stages explicit paths (no `git add -A`), commits, pushes.
@@ -106,3 +116,8 @@ On failure, append:
 - `scripts/create_pr.py`: creates a PR via GitHub API (uses `GITHUB_TOKEN` or macOS Keychain).
 - `scripts/create_pr_gh.sh`: creates a PR via `gh` (preferred).
 - `scripts/run`: entrypoint to stage/commit/push and create PR automatically (`--repo` required; `--dry-run` supported).
+- `scripts/git_hygiene.sh`: optional git hygiene helper (dry-run lists status/`[gone]` branches only; `--apply` performs `fetch --prune`, ff-update `main` when available, and deletes `[gone]` local branches except current branch).
+  - If `main` cannot be checked out (for example held by another worktree), helper skips main fast-forward and continues cleanup safely.
+  - In `--apply`, helper refreshes all tracked remotes before evaluating branch deletion, and aborts on any fetch failure.
+  - If a gone branch is held by another worktree, helper warns and skips that branch (continues with remaining cleanup).
+  - Main fast-forward uses `main` branch upstream when configured (fallback: selected remote), and pull failure is warning-only (cleanup continues).
