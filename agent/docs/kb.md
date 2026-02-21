@@ -1,7 +1,7 @@
 # Knowledge Base
 
 ## Role of this file
-- Stable reference for `/work`: folder roles, project inventory, and durable decisions.
+- Stable workspace reference: folder roles, project inventory, and durable decisions.
 - Not a startup sequence file; operational startup order is defined in `$WORKSPACE_ROOT/agent/docs/run.md`.
 
 ## Read Next
@@ -14,7 +14,8 @@
 - `$WORKSPACE_ROOT/rss/AGENTS.md`: shared resources registry and loading rules.
 - `$WORKSPACE_ROOT/agent/docs/context.md`: full no-history startup context.
 - `$WORKSPACE_ROOT/agent/specs/000-roadmap.md`: global roadmap and priorities.
-- `$WORKSPACE_ROOT/human-docs/Human-Work-Doc.md`: human-facing policy/process.
+- `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`: human-facing policy/process (EN).
+- `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`: human-facing policy/process (RU).
 - `$WORKSPACE_ROOT/human-docs/Human-Project-List.md`: project inventory.
 
 ## Folder Roles
@@ -52,6 +53,7 @@
   - `$WORKSPACE_ROOT/agent/scripts/template-sync.sh`
 - Canonical report path:
   - `$WORKSPACE_ROOT/agent/reports/template-sync-last-run.md`
+  - generated on `--apply` / apply-fail runs only; dry-run is read-only.
 - Sync state path:
   - `$WORKSPACE_ROOT/agent/reports/template-sync-state.json`
 - Common required files:

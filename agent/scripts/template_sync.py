@@ -432,22 +432,6 @@ def main():
         if state_mismatch:
             dry_run_fail_reasons.append("standards hash not applied for domain")
 
-        status = "success" if not dry_run_fail_reasons else "fail"
-        write_report(
-            report_path,
-            status=status,
-            mode="dry-run",
-            domain=args.domain,
-            version=version_value,
-            version_valid=version_valid,
-            state_before=state_before,
-            state_after=state_after,
-            projects=[str(p) for p in projects],
-            changes=all_changes,
-            conflicts=all_conflicts,
-            gate_state_mismatch=state_mismatch,
-        )
-
         if dry_run_fail_reasons:
             print(
                 "template-sync: FAIL "

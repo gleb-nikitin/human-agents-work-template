@@ -1,7 +1,7 @@
 # Runbook
 
 ## Role of this file
-- Operational entrypoint for `/work`: startup order, command matrix, and validation flow.
+- Operational workspace entrypoint: startup order, command matrix, and validation flow.
 - Keeps execution steps only; structural/reference context lives in `context.md`, `arch.md`, and `kb.md`.
 
 ## Read Next
@@ -26,11 +26,13 @@
 - Validate template standards sync gates:
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain code --dry-run`
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain web --dry-run`
+  - `--dry-run` is verification-only (must not write report/state files).
 - Apply template standards sync:
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain code --apply`
   - `bash $WORKSPACE_ROOT/agent/scripts/template-sync.sh --domain web --apply`
-- Run onboarding protocol checks (`/work` + templates + active projects + `rss/skills`):
+- Run onboarding protocol checks (workspace root + templates + active projects + `rss/skills`):
   - `bash $WORKSPACE_ROOT/agent/scripts/onboarding-check.sh`
+  - `rss/skills` missing baseline docs (`AGENTS.md`, `agent/log.md`) are informational only.
 - Validate agent script health:
   - `bash $WORKSPACE_ROOT/agent/scripts/build.sh`
 - Quick status of required agent artifacts:
