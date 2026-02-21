@@ -27,6 +27,8 @@ Run from anywhere (repo is explicit):
   - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo`
   - apply mode:
     - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo --apply`
+  - safety rule:
+    - `--apply` requires a fully clean working tree (including untracked files), otherwise exits with code `2`.
 
 What it does:
 - Reads git status, stages explicit paths (no `git add -A`), commits, pushes.

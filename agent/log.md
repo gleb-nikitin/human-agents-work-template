@@ -7,3 +7,5 @@
 2026-02-21 18:04 | execution milestone | Added rss/skills/git-publish/scripts/git_hygiene.sh and updated skill docs with usage/apply modes.
 2026-02-21 18:04 | validation | git_hygiene dry-run passed; scripts/run pr --help still works with existing interface.
 2026-02-21 18:05 | context sync | Opened PR https://github.com/gleb-nikitin/human-agents-work-template/pull/5 for git-publish hygiene helper.
+2026-02-21 18:10 | execution milestone | Updated git-publish skill docs: --apply requires fully clean tree including untracked files.
+2026-02-21 18:10 | validation | git_hygiene tests passed: dirty-tracked and dirty-untracked both refused with exit code 2.

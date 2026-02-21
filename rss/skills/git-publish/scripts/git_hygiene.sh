@@ -41,7 +41,7 @@ if ! command -v git >/dev/null 2>&1; then
   exit 2
 fi
 
-if [[ ! -d "$REPO/.git" ]]; then
+if ! git -C "$REPO" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   echo "Not a git repo: $REPO" >&2
   exit 2
 fi
@@ -49,8 +49,8 @@ fi
 cd "$REPO"
 
 if [[ "$APPLY" -eq 1 ]]; then
-  if ! git diff --quiet || ! git diff --cached --quiet; then
-    echo "Refusing --apply with dirty working tree. Commit/stash first." >&2
+  if [[ -n "$(git status --porcelain)" ]]; then
+    echo "Refusing --apply with dirty working tree (including untracked). Commit/stash/clean first." >&2
     exit 2
   fi
 fi
