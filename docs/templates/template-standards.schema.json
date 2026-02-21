@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.work/templates/template-standards.schema.json",
+  "title": "Template Standard",
+  "type": "object",
+  "required": [
+    "standard_version",
+    "domain",
+    "required_paths",
+    "forbidden_paths",
+    "file_templates",
+    "policy_rules",
+    "sync_rules"
+  ],
+  "properties": {
+    "standard_version": { "type": "string", "minLength": 8 },
+    "domain": { "type": "string", "enum": ["code", "web"] },
+    "required_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "forbidden_paths": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "file_templates": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["literal"],
+            "properties": {
+              "literal": { "type": "string" }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["template_ref"],
+            "properties": {
+              "template_ref": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          { "type": "string" }
+        ]
+      }
+    },
+    "policy_rules": { "type": "object" },
+    "sync_rules": { "type": "object" }
+  },
+  "additionalProperties": false
+}

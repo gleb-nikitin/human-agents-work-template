@@ -17,7 +17,11 @@ Public template for a workspace where humans and coding agents collaborate with 
 - Agent policy (English): `$WORKSPACE_ROOT/AGENTS.md`
 - Claude auto-load policy (English): `$WORKSPACE_ROOT/CLAUDE.md`
 - Global shared policy (English): `$WORKSPACE_ROOT/rss/AGENTS.md`
-- Agent compact context (English): `$WORKSPACE_ROOT/agent/docs/all-work-doc.md`
+- Agent startup context (English): `$WORKSPACE_ROOT/agent/docs/context.md`
+- Agent architecture (English): `$WORKSPACE_ROOT/agent/docs/arch.md`
+- Agent knowledge base (English): `$WORKSPACE_ROOT/agent/docs/kb.md`
+- Agent runbook (English): `$WORKSPACE_ROOT/agent/docs/run.md`
+- Public export summary (English): `$WORKSPACE_ROOT/agent/docs/public-export-summary.md`
 - Human policy (Russian): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Rus.md`
 - Human policy (English): `$WORKSPACE_ROOT/human-docs/Human-Work-Doc-Eng.md`
 - Human quickstart (Russian): `$WORKSPACE_ROOT/human-docs/Human-README-Rus.md`
