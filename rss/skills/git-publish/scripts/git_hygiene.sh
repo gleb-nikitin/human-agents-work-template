@@ -91,6 +91,12 @@ detect_remote() {
 
 selected_remote="$(detect_remote)"
 
+tracked_remotes="$(
+  git for-each-ref --format='%(upstream:remotename)' refs/heads \
+    | awk 'NF' \
+    | sort -u
+)"
+
 echo "== status =="
 git status -sb
 echo "== remote =="
@@ -118,11 +124,19 @@ if [[ "$APPLY" -eq 0 ]]; then
   exit 0
 fi
 
+remotes_to_refresh="$tracked_remotes"
 if [[ -n "$selected_remote" ]]; then
-  if ! git fetch "$selected_remote" --prune --quiet; then
-    echo "Fetch failed for remote '$selected_remote'; aborting --apply to avoid stale cleanup decisions." >&2
-    exit 2
-  fi
+  remotes_to_refresh="$(printf '%s\n%s\n' "$remotes_to_refresh" "$selected_remote" | awk 'NF' | sort -u)"
+fi
+
+if [[ -n "$remotes_to_refresh" ]]; then
+  while IFS= read -r remote_name; do
+    [[ -z "$remote_name" ]] && continue
+    if ! git fetch "$remote_name" --prune --quiet; then
+      echo "Fetch failed for remote '$remote_name'; aborting --apply to avoid stale cleanup decisions." >&2
+      exit 2
+    fi
+  done <<< "$remotes_to_refresh"
 fi
 
 gone_branches_after_fetch="$(

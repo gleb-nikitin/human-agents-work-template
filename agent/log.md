@@ -18,3 +18,5 @@
 2026-02-21 19:12 | validation | git_hygiene fetch-failure scenario now exits 2 with explicit abort message.
 2026-02-21 19:18 | execution milestone | Addressed PR#5 P2 for multi-worktree main checkout guard and synced helper docs.
 2026-02-21 19:18 | validation | git_hygiene tests passed: worktree-held main no longer aborts apply; fetch-fail guard unchanged.
+2026-02-21 19:27 | execution milestone | Updated git_hygiene docs/logic for tracked-remotes refresh before [gone] branch deletion pass.
+2026-02-21 19:27 | validation | Proactive audit tests passed: feature branch preserved after remote recreate and apply aborts on tracked-remote fetch errors.
