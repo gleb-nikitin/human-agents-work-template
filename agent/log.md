@@ -13,3 +13,4 @@
 2026-02-21 18:59 | validation | git_hygiene tests passed: no-origin dry-run, worktree dry-run, and apply on current gone branch without delete failure.
 2026-02-21 19:03 | execution milestone | Addressed PR#5 follow-up: rescan [gone] branches after fetch --prune before deletion pass.
 2026-02-21 19:03 | validation | git_hygiene regression scenarios passed (post-prune stale deletion + current branch safety).
+2026-02-21 19:04 | context sync | Pushed PR#5 update: recompute [gone] branches after fetch --prune before deletion.
