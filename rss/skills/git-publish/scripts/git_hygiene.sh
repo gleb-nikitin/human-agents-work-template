@@ -119,7 +119,10 @@ if [[ "$APPLY" -eq 0 ]]; then
 fi
 
 if [[ -n "$selected_remote" ]]; then
-  git fetch "$selected_remote" --prune --quiet || echo "warning: fetch failed for remote '$selected_remote'" >&2
+  if ! git fetch "$selected_remote" --prune --quiet; then
+    echo "Fetch failed for remote '$selected_remote'; aborting --apply to avoid stale cleanup decisions." >&2
+    exit 2
+  fi
 fi
 
 gone_branches_after_fetch="$(

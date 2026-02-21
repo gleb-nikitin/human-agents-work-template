@@ -32,6 +32,7 @@ Run from anywhere (repo is explicit):
   - safety rule:
     - `--apply` requires a fully clean working tree (including untracked files), otherwise exits with code `2`.
     - dry-run is read-only: no `fetch`/`prune` and no branch deletions.
+    - in `--apply`, remote fetch/prune failure is fatal (aborts before any branch deletion).
 
 What it does:
 - Reads git status, stages explicit paths (no `git add -A`), commits, pushes.

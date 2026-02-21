@@ -14,3 +14,5 @@
 2026-02-21 19:03 | execution milestone | Addressed PR#5 follow-up: rescan [gone] branches after fetch --prune before deletion pass.
 2026-02-21 19:03 | validation | git_hygiene regression scenarios passed (post-prune stale deletion + current branch safety).
 2026-02-21 19:04 | context sync | Pushed PR#5 update: recompute [gone] branches after fetch --prune before deletion.
+2026-02-21 19:12 | execution milestone | Addressed PR#5 P1: abort apply when remote fetch fails to prevent stale-ref branch deletions.
+2026-02-21 19:12 | validation | git_hygiene fetch-failure scenario now exits 2 with explicit abort message.
