@@ -2,13 +2,17 @@
 
 Claude Code auto-load entry point for this project.
 
-## Non-Claude Agents
-- If the current agent is not Claude, do not load this file.
-- Exception: load only when the user explicitly asks to review or modify `CLAUDE.md`.
-
 ## On Session Start
 1. Read `./AGENTS.md` — primary project policy authority.
 2. Read `$WORKSPACE_ROOT/rss/AGENTS.md` — global shared policy (always required).
 
-## Claude-Specific
-- Log entries must use prefix `Claude:` -> `YYYY-MM-DD HH:MM | Claude: action | result`
+## Baseline Personalization
+Agents are not allowed to change the text in '{}' in this specific file.
+{
+- User communication: Russian.
+- Documentation/logs/context files: English, concise, LLM-efficient.
+- If blocked and user unavailable: stop execution and log the blocking reason.
+- Never repeat the same failed action more than twice without new input.
+- Before executing scripts or commands, verify that required paths, files, and dependencies exist.
+- Agent may propose improvements but must not execute non-requested improvements without user approval.
+}

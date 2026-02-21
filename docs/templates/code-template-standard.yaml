@@ -1,0 +1,82 @@
+{
+  "standard_version": "0893af919a77b8f8ee8f9a089c7fdd766c506d35f519be7e5718f55743e0700b",
+  "domain": "code",
+  "required_paths": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "agent/log.md",
+    "agent/docs/",
+    "agent/docs/context.md",
+    "agent/docs/arch.md",
+    "agent/docs/kb.md",
+    "agent/docs/run.md",
+    "agent/specs/",
+    "agent/specs/000-roadmap.md",
+    "agent/scripts/",
+    "agent/scripts/run.sh",
+    "agent/scripts/build.sh",
+    "agent/scripts/monitor.sh",
+    "agent/src/",
+    "agent/src/.gitkeep"
+  ],
+  "forbidden_paths": [
+    "log.md"
+  ],
+  "file_templates": {
+    "AGENTS.md": {
+      "template_ref": "snippets/code/AGENTS.md.tpl"
+    },
+    "CLAUDE.md": {
+      "template_ref": "snippets/code/CLAUDE.md.tpl"
+    },
+    "agent/log.md": {
+      "template_ref": "snippets/code/agent-log.md.tpl"
+    },
+    "agent/docs/context.md": {
+      "template_ref": "snippets/code/agent-docs-context.md.tpl"
+    },
+    "agent/docs/arch.md": {
+      "template_ref": "snippets/code/agent-docs-arch.md.tpl"
+    },
+    "agent/docs/kb.md": {
+      "template_ref": "snippets/code/agent-docs-kb.md.tpl"
+    },
+    "agent/docs/run.md": {
+      "template_ref": "snippets/code/agent-docs-run.md.tpl"
+    },
+    "agent/specs/000-roadmap.md": {
+      "template_ref": "snippets/code/agent-specs-000-roadmap.md.tpl"
+    },
+    "agent/scripts/run.sh": {
+      "template_ref": "snippets/code/agent-scripts-run.sh.tpl"
+    },
+    "agent/scripts/build.sh": {
+      "template_ref": "snippets/code/agent-scripts-build.sh.tpl"
+    },
+    "agent/scripts/monitor.sh": {
+      "template_ref": "snippets/code/agent-scripts-monitor.sh.tpl"
+    },
+    "agent/src/.gitkeep": {
+      "literal": ""
+    }
+  },
+  "policy_rules": {
+    "template_forbidden_paths": [
+      "docs/",
+      "specs/",
+      "scripts/",
+      "src/"
+    ],
+    "agents_required_contains": [
+      "## Required Files",
+      "## Logging Timestamp Rule"
+    ]
+  },
+  "sync_rules": {
+    "required_paths": "auto_fix",
+    "forbidden_paths": "auto_fix_delete",
+    "file_templates_template_dir": "overwrite",
+    "file_templates_projects": "create_if_missing_only",
+    "project_existing_content": "do_not_rewrite"
+  }
+}
