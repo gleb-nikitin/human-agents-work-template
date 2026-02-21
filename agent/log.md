@@ -24,3 +24,6 @@
 2026-02-21 19:34 | validation | git_hygiene multi-gone test passed: locked branch kept with warning, stale branch removed.
 2026-02-21 19:35 | context sync | Scheduled delayed PR#5 review-comment check (+5m) with log-only reporting.
 2026-02-21 19:35 | context sync | Active delayed PR#5 comment check job started (+5m, baseline comment id=2836440748).
+2026-02-21 19:45 | validation | Auto-check follow-up: background job produced no output; latest PR#5 comment id advanced to 2836448711.
+2026-02-21 19:46 | execution milestone | Addressed PR#5 main-upstream comment and synced git_hygiene behavior docs.
+2026-02-21 19:46 | validation | Tests passed: main updated via upstream while cleanup continued; fetch-fail still aborts apply.

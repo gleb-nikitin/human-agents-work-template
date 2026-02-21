@@ -146,8 +146,19 @@ gone_branches_after_fetch="$(
 
 if git show-ref --verify --quiet refs/heads/main; then
   if git checkout main >/dev/null 2>&1; then
-    if [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
-      git pull --ff-only "$selected_remote" main
+    main_upstream_remote="$(git config --get branch.main.remote || true)"
+    main_upstream_merge="$(git config --get branch.main.merge || true)"
+    if [[ -n "$main_upstream_remote" ]] && [[ -n "$main_upstream_merge" ]] && git remote | grep -Fxq "$main_upstream_remote"; then
+      main_upstream_branch="${main_upstream_merge#refs/heads/}"
+      if git show-ref --verify --quiet "refs/remotes/$main_upstream_remote/$main_upstream_branch"; then
+        if ! git pull --ff-only "$main_upstream_remote" "$main_upstream_branch"; then
+          echo "warning: unable to fast-forward main from '$main_upstream_remote/$main_upstream_branch'; continuing cleanup." >&2
+        fi
+      fi
+    elif [[ -n "$selected_remote" ]] && git show-ref --verify --quiet "refs/remotes/$selected_remote/main"; then
+      if ! git pull --ff-only "$selected_remote" main; then
+        echo "warning: unable to fast-forward main from '$selected_remote/main'; continuing cleanup." >&2
+      fi
     fi
   else
     echo "warning: unable to checkout 'main' (possibly used by another worktree); skipping main fast-forward update." >&2

@@ -120,3 +120,4 @@ On failure, append:
   - If `main` cannot be checked out (for example held by another worktree), helper skips main fast-forward and continues cleanup safely.
   - In `--apply`, helper refreshes all tracked remotes before evaluating branch deletion, and aborts on any fetch failure.
   - If a gone branch is held by another worktree, helper warns and skips that branch (continues with remaining cleanup).
+  - Main fast-forward uses `main` branch upstream when configured (fallback: selected remote), and pull failure is warning-only (cleanup continues).
