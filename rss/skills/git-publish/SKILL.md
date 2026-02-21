@@ -23,6 +23,10 @@ Run from anywhere (repo is explicit):
   - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/run no-pr --repo /absolute/path/to/repo`
 - Dry run (prints detected paths; no commit/push):
   - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/run pr --repo /absolute/path/to/repo --dry-run`
+- Git hygiene helper (safe dry-run by default, does not publish):
+  - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo`
+  - apply mode:
+    - `$WORKSPACE_ROOT/rss/skills/git-publish/scripts/git_hygiene.sh --repo /absolute/path/to/repo --apply`
 
 What it does:
 - Reads git status, stages explicit paths (no `git add -A`), commits, pushes.
@@ -106,3 +110,4 @@ On failure, append:
 - `scripts/create_pr.py`: creates a PR via GitHub API (uses `GITHUB_TOKEN` or macOS Keychain).
 - `scripts/create_pr_gh.sh`: creates a PR via `gh` (preferred).
 - `scripts/run`: entrypoint to stage/commit/push and create PR automatically (`--repo` required; `--dry-run` supported).
+- `scripts/git_hygiene.sh`: optional git hygiene helper (`fetch --prune`, list/delete `[gone]` local branches, and ff-update `main` in `--apply` mode).
