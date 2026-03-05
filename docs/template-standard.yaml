@@ -1,0 +1,50 @@
+# Unified Template Standard
+# Single source of truth for project structure validation.
+# Reference template: __ROOT__/_project-template/
+
+standard_version: "v3"
+template_dir: "_project-template"
+
+required_paths:
+  - AGENTS.md
+  - CLAUDE.md
+  - agent/log.md
+  - agent/docs/
+  - agent/docs/context.md
+  - agent/docs/arch.md
+  - agent/docs/kb.md
+  - agent/docs/run.md
+  - agent/scripts/
+  - agent/scripts/run.sh
+  - agent/scripts/build.sh
+  - agent/scripts/monitor.sh
+  - agent/specs/
+  - agent/specs/000-spec-template.md
+  - agent/roadmap/
+  - agent/roadmap/state.md
+  - agent/roadmap/archive.md
+  - agent/roadmap/intent.md
+
+forbidden_paths:
+  - log.md                    # legacy root-level log; must be agent/log.md
+  - agent/specs/000-roadmap.md  # legacy single-file roadmap; use roadmap/ dir
+  - agent/specs/roadmap/      # legacy roadmap path; use agent/roadmap/
+
+policy_rules:
+  agents_required_sections:
+    - "## Shared Policy"
+    - "## Cold Start"
+  agents_must_reference_shared:
+    - "__ROOT__/rss/AGENTS.md"
+
+sync_rules:
+  required_paths: auto_fix
+  forbidden_paths: auto_fix_delete
+  project_existing_content: do_not_rewrite
+
+# Domain-specific additions (applied by new-project.sh):
+# web:
+#   extra_required_paths:
+#     - web/
+#     - web/README.md
+#   arch_extra_section: "## Deployment"
