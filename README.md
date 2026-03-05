@@ -1,4 +1,4 @@
-# Agent Workspace Template v2
+# Agent Workspace Template v3
 
 Template workspace for AI agent-driven projects with file-based policy, spec-driven lifecycle, and shared tooling.
 
@@ -8,8 +8,15 @@ Template workspace for AI agent-driven projects with file-based policy, spec-dri
 3. Start working in `code/my-project/`
 
 ## Key Files
-- `rss/AGENTS.md` — shared policy (THE main document for all project agents)
-- `_project-template/` — unified project scaffold
+- `AGENTS.md` — workspace-level policy (bootstrap and validation)
+- `_project-template/` — unified project scaffold (each project gets its own `AGENTS.md` with full policy)
 - `_project-template/agent/scripts/` — per-project runtime entrypoints (`run.sh`, `build.sh`, `monitor.sh`)
+- `_project-template/agent/src/` — project source code root
+- `rss/index.md` — shared resources index (skills, tools)
 - `Human-README.md` — operator guide
+- `human-system-report.md` — human-facing quality snapshot (`7.5/10` overall)
 - `docs/template-standard.yaml` — template standard definition
+
+## Validation
+- `bash agent/scripts/policy-check.sh` — check projects against template standard
+- `bash agent/scripts/template-sync.sh --dry-run` — preview template alignment fixes

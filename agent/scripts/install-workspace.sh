@@ -52,7 +52,7 @@ echo "Replacement complete."
 # Audit for personal markers
 echo ""
 echo "Auditing for personal markers..."
-PERSONAL_MARKERS=("glebnikitin" "/Users/glebnikitin")
+PERSONAL_MARKERS=("__PATH_PLACEHOLDER_CHANGE_ME__" "__ROOT__")
 FOUND_PERSONAL=0
 for marker in "${PERSONAL_MARKERS[@]}"; do
   HITS=$(rg -c "$marker" "$WORKSPACE_ROOT" 2>/dev/null | head -5)

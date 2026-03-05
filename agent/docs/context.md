@@ -5,8 +5,8 @@
 - Goal: deterministic, low-noise project bootstrap from files alone.
 
 ## Structure
-- `_project-template/` — unified project scaffold (code + web).
-- `rss/AGENTS.md` — THE shared policy for all project agents.
+- `_project-template/` — unified project scaffold (code + web), includes full agent policy.
+- `rss/index.md` — shared resources index (skills, tools).
 - `rss/skills/git-publish/` — shared git publishing skill.
 - `code/`, `web/` — domain folders for real projects.
 - `agent/scripts/` — bootstrap and validation tools.
@@ -23,6 +23,7 @@
 
 ## Key Decisions
 - One unified template; domain differences via installer flags.
-- `rss/AGENTS.md` is THE shared policy (all projects inherit).
-- `v2` roadmap layout (`state/archive/intent`) for all new projects.
-- Project agents load only their local `AGENTS.md` + `rss/AGENTS.md`. Never this workspace AGENTS.md.
+- Each project gets a self-contained `AGENTS.md` from the template (no external shared policy file).
+- Shared skills and tools are discovered via `rss/index.md`.
+- `v3` roadmap layout (`agent/roadmap/state.md`, `archive.md`, `intent.md`) for all new projects.
+- Project agents load only their local `AGENTS.md`. Never this workspace AGENTS.md.

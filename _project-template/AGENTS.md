@@ -1,6 +1,6 @@
 # Agent Policy v3
 
-## Auto-generated file by `/work/` system script.
+## Auto-generated file by workspace system script.
 Manual edits to AGENTS.md in this folder are prohibited.
 
 ## Scope
@@ -10,23 +10,16 @@ Manual edits to AGENTS.md in this folder are prohibited.
 
 | Path | Purpose | Default access |
 |---|---|---|
-| `/Users/glebnikitin/disk/<this-folder-name>/` | Project data that must not go to git | Read/Write |
-| `/Users/glebnikitin/work/server/<this-folder-name>/` | Server data for web-facing interfaces | Read/Write |
-| `/Users/glebnikitin/work/rss/index.md` | Shared resources index (discovery only) | Read only |
+| `__ROOT__/disk/<this-folder-name>/` | Project data that must not go to git | Read/Write |
+| `__ROOT__/server/<this-folder-name>/` | Server data for web-facing interfaces | Read/Write |
+| `__ROOT__/rss/index.md` | Shared resources index (discovery only) | Read only |
 
-## Shared resources
-- Load only if needed via `/Users/glebnikitin/work/rss/index.md`.
+## Shared Policy
+- Load only if needed via `__ROOT__/rss/index.md`.
 - Use the index for discovery; load referenced resources only when the current task explicitly requires them.
 
-## Code Search (MCP: code-indexer)
-- Prefer `search_code` over Grep/Glob — faster, supports semantic and symbol search.
-- Default mode `cascade` (symbol → semantic → exact). Use `compact: true` to save tokens.
-- `find_callers(project, function)` / `find_references(project, symbol)` — trace dependencies.
-- `find_solutions(query)` before debugging non-trivial errors; `add_solution(problem, solution)` after solving.
-- Project name = folder name (e.g. `search_code(query="...", project="<this-folder-name>")`). `list_projects()` for discovery.
-
 ## GIT operations
-use: `/Users/glebnikitin/work/rss/skills/git-publish/SKILL.md`
+use: `__ROOT__/rss/skills/git-publish/SKILL.md`
 
 ## Rule Priority
 1. System/runtime constraints.
@@ -50,7 +43,7 @@ use: `/Users/glebnikitin/work/rss/skills/git-publish/SKILL.md`
 - Use only English and code in context files.
 
 ### Lazy-Load Policy
-- Don't load context or historical docs by default.
+- Don't load context, historical docs, or how-to files by default.
 - Load only when the active task explicitly requires it.
 - Any file whose name contains `human` is not for LLM use; load only on explicit user request.
 
@@ -63,6 +56,10 @@ use: `/Users/glebnikitin/work/rss/skills/git-publish/SKILL.md`
 - Maintain lazy-load index in `kb.md`.
 - Before deleting legacy context files, verify coverage of commands, learnings, regressions, and diagnostics.
 - Missing coverage blocks deletion.
+
+### How To
+- `./agent/how-to/index.md` — load when planning a spec; this is the index of known proven solutions and links.
+- Add a how-to file when a resolved issue is likely to repeat or when the user explicitly requests documentation.
 
 ### Roadmap
 - `./agent/roadmap/state.md` — current active spec pointer and important notes for next no-history session. Links to next planned specs after completion of current spec for multi-spec queue.

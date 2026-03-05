@@ -6,10 +6,83 @@ Reads docs/template-standard.yaml for required/forbidden paths and policy rules.
 """
 
 import argparse
-import os
 import sys
-import yaml
 from pathlib import Path
+
+try:
+    import yaml  # type: ignore
+except ModuleNotFoundError:
+    yaml = None
+
+
+def _extract_block(lines: list[str], key: str) -> list[str]:
+    start = None
+    for i, line in enumerate(lines):
+        if line.strip() == f"{key}:":
+            start = i + 1
+            break
+    if start is None:
+        return []
+
+    block = []
+    for line in lines[start:]:
+        if not line.strip():
+            continue
+        if not line.startswith(" "):
+            break
+        block.append(line.rstrip("\n"))
+    return block
+
+
+def _extract_list_from_block(block: list[str], indent: int = 2) -> list[str]:
+    prefix = " " * indent + "- "
+    items = []
+    for line in block:
+        if line.startswith(prefix):
+            items.append(line[len(prefix):].strip())
+    return items
+
+
+def _extract_scalar(lines: list[str], key: str) -> str | None:
+    prefix = f"{key}:"
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith(prefix):
+            value = stripped[len(prefix):].strip().strip('"')
+            return value
+    return None
+
+
+def _load_standard_without_yaml(standard_path: Path) -> dict:
+    lines = standard_path.read_text(encoding="utf-8").splitlines()
+    policy_block = _extract_block(lines, "policy_rules")
+    sync_block = _extract_block(lines, "sync_rules")
+
+    data = {
+        "standard_version": _extract_scalar(lines, "standard_version") or "unknown",
+        "template_dir": _extract_scalar(lines, "template_dir") or "_project-template",
+        "required_paths": _extract_list_from_block(_extract_block(lines, "required_paths")),
+        "forbidden_paths": _extract_list_from_block(_extract_block(lines, "forbidden_paths")),
+        "policy_rules": {
+            "agents_required_sections": _extract_list_from_block(
+                _extract_block(policy_block, "agents_required_sections"), indent=4
+            ),
+            "agents_must_reference_shared": _extract_list_from_block(
+                _extract_block(policy_block, "agents_must_reference_shared"), indent=4
+            ),
+        },
+        "sync_rules": {},
+    }
+
+    for line in sync_block:
+        if ":" not in line:
+            continue
+        if line.lstrip().startswith("- "):
+            continue
+        key, value = line.split(":", 1)
+        data["sync_rules"][key.strip()] = value.strip()
+
+    return data
 
 
 def load_standard(workspace_root: Path) -> dict:
@@ -17,8 +90,10 @@ def load_standard(workspace_root: Path) -> dict:
     if not standard_path.exists():
         print(f"Error: standard file not found: {standard_path}")
         sys.exit(1)
-    with open(standard_path) as f:
-        return yaml.safe_load(f)
+    if yaml is not None:
+        with open(standard_path, encoding="utf-8") as f:
+            return yaml.safe_load(f)
+    return _load_standard_without_yaml(standard_path)
 
 
 def find_projects(workspace_root: Path, domain: str) -> list[Path]:

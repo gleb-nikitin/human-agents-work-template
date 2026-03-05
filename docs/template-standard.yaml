@@ -14,6 +14,10 @@ required_paths:
   - agent/docs/arch.md
   - agent/docs/kb.md
   - agent/docs/run.md
+  - agent/how-to/
+  - agent/how-to/index.md
+  - agent/src/
+  - agent/src/.gitkeep
   - agent/scripts/
   - agent/scripts/run.sh
   - agent/scripts/build.sh
@@ -35,7 +39,7 @@ policy_rules:
     - "## Shared Policy"
     - "## Cold Start"
   agents_must_reference_shared:
-    - "__ROOT__/rss/AGENTS.md"
+    - "__ROOT__/rss/index.md"
 
 sync_rules:
   required_paths: auto_fix

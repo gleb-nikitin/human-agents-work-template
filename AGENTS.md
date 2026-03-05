@@ -3,7 +3,7 @@
 ## Scope
 - `__ROOT__/` and subfolders only.
 - This file governs workspace maintenance and project bootstrapping.
-- Project agents do not load this file; they use their local `AGENTS.md` + `__ROOT__/rss/AGENTS.md`.
+- Project agents do not load this file; they use their local `AGENTS.md`.
 
 ## Core Rules
 - Primary objective: maximize agent execution efficiency.
@@ -26,6 +26,7 @@
 ## Template Sync Rules
 - Canonical standard: `__ROOT__/docs/template-standard.yaml`.
 - Reference template: `__ROOT__/_project-template/`.
+- Shared resources index: `__ROOT__/rss/index.md`.
 - Existing projects: add missing required paths/files, delete forbidden paths, do not rewrite existing content without user approval.
 - `--dry-run` must be side-effect free.
 
@@ -41,7 +42,7 @@
 ## Post-Work Updates
 | Trigger | Files to Update |
 |---|---|
-| policy change | `AGENTS.md`, `rss/AGENTS.md`, `agent/docs/context.md`, `agent/log.md` |
+| policy change | `AGENTS.md`, `agent/docs/context.md`, `agent/log.md` |
 | human-facing process change | `Human-README.md`, `agent/log.md` |
 | project create/remove/rename | `agent/docs/context.md`, `agent/log.md` |
 | template standard change | `docs/template-standard.yaml`, `_project-template/`, `agent/log.md` |

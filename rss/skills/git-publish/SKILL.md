@@ -7,10 +7,10 @@ Status: development scaffold (target protocol), implementation in progress.
 ## Usage
 
 ```
-/Users/glebnikitin/work/rss/skills/git-publish/scripts/run <operation> --repo /absolute/path [args...]
+__ROOT__/rss/skills/git-publish/scripts/run <operation> --repo /absolute/path [args...]
 ```
 
-`--repo` is always required. Must be an absolute path to a git repo. Never use workspace root (`/Users/glebnikitin/work`).
+`--repo` is always required. Must be an absolute path to a git repo. Never use workspace root (`__ROOT__`).
 
 ## Workflow
 

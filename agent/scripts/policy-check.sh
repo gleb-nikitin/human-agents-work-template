@@ -45,6 +45,8 @@ check_project() {
     "agent/docs/arch.md"
     "agent/docs/kb.md"
     "agent/docs/run.md"
+    "agent/how-to/index.md"
+    "agent/src/.gitkeep"
     "agent/scripts/run.sh"
     "agent/scripts/build.sh"
     "agent/scripts/monitor.sh"
@@ -86,8 +88,8 @@ check_project() {
       echo "  POLICY: AGENTS.md missing '## Cold Start' section"
       ERRORS=$((ERRORS + 1))
     fi
-    if ! grep -q 'rss/AGENTS.md' "$agents_file"; then
-      echo "  POLICY: AGENTS.md must reference rss/AGENTS.md"
+    if ! grep -q 'rss/index.md' "$agents_file"; then
+      echo "  POLICY: AGENTS.md must reference rss/index.md"
       ERRORS=$((ERRORS + 1))
     fi
   fi
@@ -123,7 +125,7 @@ fi
 # Also validate the template itself
 echo ""
 echo "Checking template: $TEMPLATE_DIR"
-for req in AGENTS.md CLAUDE.md agent/log.md agent/docs/context.md agent/docs/arch.md agent/docs/kb.md agent/docs/run.md agent/scripts/run.sh agent/scripts/build.sh agent/scripts/monitor.sh agent/specs/000-spec-template.md agent/roadmap/state.md agent/roadmap/archive.md agent/roadmap/intent.md; do
+for req in AGENTS.md CLAUDE.md agent/log.md agent/docs/context.md agent/docs/arch.md agent/docs/kb.md agent/docs/run.md agent/how-to/index.md agent/src/.gitkeep agent/scripts/run.sh agent/scripts/build.sh agent/scripts/monitor.sh agent/specs/000-spec-template.md agent/roadmap/state.md agent/roadmap/archive.md agent/roadmap/intent.md; do
   if [ ! -f "$TEMPLATE_DIR/$req" ]; then
     echo "  TEMPLATE MISSING: $req"
     ERRORS=$((ERRORS + 1))

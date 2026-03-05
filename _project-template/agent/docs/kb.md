@@ -2,12 +2,13 @@
 
 ## Role of this file
 - Keep stable operational knowledge short and index-first.
-- Move deeper recurring procedures into `./agent/docs/how-to_*.md` and link them here when needed.
+- Move deeper recurring procedures into `./agent/how-to/*.md` and link them from `./agent/how-to/index.md`.
 
 ## Lazy-Load Index
 - `./agent/docs/arch.md` — architecture, stack, boundaries.
 - `./agent/docs/run.md` — run/build/test commands.
 - `./agent/scripts/` — canonical project runtime script entrypoints.
+- `./agent/how-to/index.md` — index of recurring proven solutions.
 
 ## Known Debt
 - <debt item, or "none identified">

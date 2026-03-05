@@ -8,7 +8,7 @@ This system works best when the human acts as the operator and the agent acts as
 1. Choose where the workspace should live.
 2. Ask your agent to read `AGENTS.md`.
 3. Let the agent run `bash agent/scripts/install-workspace.sh /absolute/workspace/root`.
-4. Review `rss/AGENTS.md` (the shared policy for all projects).
+4. Review `_project-template/AGENTS.md` (the policy template for all projects).
 5. Start creating projects under `code/` or `web/`.
 
 ## How to work with agents
@@ -47,6 +47,37 @@ Use clear operator-style commands.
 - Task that needs sequencing: `plan`
 - Task that changes rules, templates, or multiple projects: start with a spec
 
+## Spec and roadmap lifecycle
+
+Each project manages work through specs and a roadmap:
+
+- **Intent** (`agent/roadmap/intent.md`) — project goals and direction. Discuss intents first.
+- **State** (`agent/roadmap/state.md`) — current active spec pointer. The agent reads this on cold start.
+- **Specs** (`agent/specs/NNN-kebab-name.md`) — scoped work units with acceptance criteria.
+- **Archive** (`agent/roadmap/archive.md`) — completed specs, newest first.
+
+Typical flow:
+1. Discuss intents → agree on direction.
+2. Plan a spec → agent writes `agent/specs/NNN-name.md` with deliverables and acceptance criteria.
+3. Execute the spec → agent marks `[x]` on criteria as work completes.
+4. Accept the spec → agent closes it, updates roadmap state and archive.
+
+The workspace-level roadmap lives at `agent/specs/000-roadmap.md`.
+
+## How-to guides
+
+Proven solutions to recurring problems are stored in `agent/how-to/`:
+- `agent/how-to/index.md` — index of all guides.
+- Add a guide when a resolved issue is likely to repeat.
+- Agents load the index during planning, not on cold start.
+
+## Readiness and audit outputs
+
+- `agent/docs/public-readiness-audit.md` — latest public release audit verdict and findings.
+- `human-system-report.md` — human-facing system quality snapshot (`7.5/10` overall).
+- `agent/scripts/policy-check.sh` — validates projects against template standard.
+- `agent/scripts/template-sync.sh --dry-run` — checks template alignment without changes.
+
 ## Git and safety
 
 - `commit` is local and safe.
@@ -56,9 +87,10 @@ Use clear operator-style commands.
 
 ## Main folders
 
-- `_project-template/` — unified project scaffold
+- `_project-template/` — unified project scaffold (each project gets its own `AGENTS.md`)
 - `_project-template/agent/scripts/` — project-local runtime command entrypoints
-- `rss/` — shared policy and skills for all projects
+- `_project-template/agent/src/` — project source code root
+- `rss/` — shared skills and tools for all projects
 - `agent/` — workspace docs, scripts, roadmap, and log
 - `docs/` — template standard
 - `code/` — code project roots
